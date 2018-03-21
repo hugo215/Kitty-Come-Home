@@ -37,7 +37,7 @@ var stars;
 var bombs;
 var platforms;
 var cursors;
-var score = 76327139128277;
+var score = 0;
 var gameOver = false;
 var scoreText;
 
@@ -66,7 +66,7 @@ function create ()
     platforms.create(400, 600, 'ground').setScale(2).refreshBody();
 
     //  Now let's create some ledges
-    platforms.create(200, 400, 'ground');
+    platforms.create(300, 400, 'ground');
     platforms.create(50, 300, 'ground');
     platforms.create(750, 350, 'ground');
 
