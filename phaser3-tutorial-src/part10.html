@@ -103,7 +103,7 @@ function create ()
     fishs = this.physics.add.group({
         key: 'fish',
         repeat: 11,
-        setXY: { x: 12, y: 0, stepX: 70 }
+        setXY: { x: 12, y: 10, stepX: 250 }
     });
 
     fishs.children.iterate(function (child) {
@@ -198,8 +198,7 @@ function hitBomb (player, bomb)
     player.anims.play('turn');
 
     gameOver = true;
-    
-    this.game.world.wrap(this.player, -(this.game.width/2), false, true, false);
+
 }
 
 </script>
