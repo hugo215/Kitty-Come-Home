@@ -67,13 +67,13 @@ function create ()
     platforms.create(300, 495, 'ground');
 
     // The player and its settings
-    player = this.physics.add.sprite(0, 400, 'cat');
+    player = this.physics.add.sprite(100, 400, 'cat');
 
     //  Player physics properties. Give the little guy a slight bounce.
     player.setBounce(0.0);
     player.setCollideWorldBounds(true);
     
-    this.physics.world.setBounds(0, 0, 850, 480);
+    this.physics.world.setBounds(0, 300, 400, 480);
     this.cameras.main.setSize(850, 480);
     this.cameras.main.startFollow(background);
 
@@ -138,15 +138,15 @@ function update ()
         return;
     }
 
-    if (cursors.left.isDown)
+    if (cursors.down.isDown)
     {
-        player.setVelocityX(-160);
+        player.setVelocityY(160);
 
         player.anims.play('left', true);
     }
-    else if (cursors.right.isDown)
+    else if (cursors.up.isDown)
     {
-        player.setVelocityX(160);
+        player.setVelocityY(-160);
 
         player.anims.play('right', true);
     }
