@@ -54968,7 +54968,7 @@ Object.defineProperty(Phaser.Sound.prototype, "volume", {
 * The Sound Manager is responsible for playing back audio via either the Legacy HTML Audio tag or via Web Audio if the browser supports it.
 * Note: On Firefox 25+ on Linux if you have media.gstreamer disabled in about:config then it cannot play back mp3 or m4a files.
 * The audio file type and the encoding of those files are extremely important. Not all browsers can play all audio formats.
-* There is a good guide to what's supported here: http://hpr.dogphilosophy.net/test/
+* There is a good guide to what's supported here: http://hpr.catphilosophy.net/test/
 *
 * @class Phaser.SoundManager
 * @constructor
