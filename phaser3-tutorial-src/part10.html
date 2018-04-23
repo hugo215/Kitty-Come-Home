@@ -56,7 +56,7 @@ function preload ()
 function create ()
 {
     //  A simple background for our game
-   background = this.add.image(425, 242, 'street')
+    background = this.add.image(425, 242, 'street')
 
     //  The platforms group contains the ground and the 2 ledges we can jump on
     platforms = this.physics.add.staticGroup();
@@ -70,14 +70,14 @@ function create ()
 
     // The player and its settings
     player = this.physics.add.sprite(100, 400, 'cat');
-
+    
     //  Player physics properties. Give the little guy a slight bounce.
     player.setBounce(0.0);
     player.setCollideWorldBounds(true);
     
     this.physics.world.setBounds(0, 300, 400, 480);
     this.cameras.main.setSize(850, 480);
-    this.cameras.main.startFollow(background);
+    this.cameras.main.startFollow(player);
 
     //  Our player animations, turning, walking left and walking right.
     this.anims.create({
@@ -135,6 +135,8 @@ function create ()
 
 function update ()
 {
+    background.x -=3;
+    
     if (gameOver)
     {
         return;
