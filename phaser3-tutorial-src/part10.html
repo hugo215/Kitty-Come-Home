@@ -59,7 +59,6 @@ function create ()
     //  A simple background for our game
     background = this.add.image(425, 242, 'street')
     
-
     //  The platforms group contains the ground and the 2 ledges we can jump on
     platforms = this.physics.add.staticGroup();
 
@@ -137,10 +136,13 @@ function create ()
 function update ()
 {   background.x -= 3;
  
+ 
  //if background reaches to a certain x position, then put x position back to 0
-    if (background.x == 2554)
+    if (background.x == 2550)
         
-       {background.x = 0}
+        {
+            background.x = 1
+        }
     //this.physics.world.wrap(backround, 0);
     
     if (gameOver)
