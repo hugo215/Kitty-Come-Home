@@ -15,13 +15,14 @@
 <script type="text/javascript">
 
 var config = {
-    type: Phaser.AUTO,
+    type: Phaser.WEBGL,
     width: 850,
     height: 480,
     physics: {
         default: 'arcade',
         arcade: {
-            debug: false
+            debug: false,
+            
         }
     },
     scene: {
@@ -54,9 +55,10 @@ function preload ()
 }
 
 function create ()
-{
+{   
     //  A simple background for our game
     background = this.add.image(425, 242, 'street')
+    
 
     //  The platforms group contains the ground and the 2 ledges we can jump on
     platforms = this.physics.add.staticGroup();
@@ -133,8 +135,13 @@ function create ()
 }
 
 function update ()
-{
-    background.x -=3;
+{   background.x -= 3;
+ 
+ //if background reaches to a certain x position, then put x position back to 0
+    if (background.x == 2554)
+        
+       {background.x = 0}
+    //this.physics.world.wrap(backround, 0);
     
     if (gameOver)
     {
@@ -164,6 +171,11 @@ function update ()
     {
         player.setVelocityY(-330);
     }
+//     cameraPosition.x += (cameraPosition. 475) * background;
+//    cameraPosition.y += (cameraPosition. 0) * backround;
+// game.camera.focusOnXY(cameraPosition. 0, cameraPosition. 0);
+//    //This is optional, in this case the background is repeated every time
+//    background.tilePosition.x += 5;
 }
 
 function collectfish (player, fish)
