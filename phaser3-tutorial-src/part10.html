@@ -116,6 +116,13 @@ function create ()
         //  Give each fish a slightly different bounce
         child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
 
+
+        // Add 0 to 100 to the y-position of each fish
+        // https://www.w3schools.com/jsref/jsref_random.asp
+        var offset = Math.floor((Math.random() * 100) + 1);
+        child.y = 300 + offset;
+        console.log(child);
+
     });
 
     bombs = this.physics.add.group();
@@ -139,6 +146,12 @@ function create ()
 
 function update ()
 {   background.x -= 3;
+
+    fishs.children.iterate(function (child) {
+
+        child.x -= 3;
+
+    });
 
     debug.setText('Position: ' + background.x);
  
