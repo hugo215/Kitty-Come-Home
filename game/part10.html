@@ -57,7 +57,8 @@ function preload ()
 function create ()
 {   
     //  A simple background for our game
-    background = this.add.image(425, 242, 'street')
+    // Left: 0 (origin) starts at half the image (1278 is 1/2 of 2556)
+    background = this.add.image(1278, 240, 'street')
 
     //  The platforms group contains the ground and the 2 ledges we can jump on
     platforms = this.physics.add.staticGroup();
@@ -115,12 +116,21 @@ function create ()
         //  Give each fish a slightly different bounce
         child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
 
+        // Add 0 to 100 to the y-position of each fish
+        // https://www.w3schools.com/jsref/jsref_random.asp
+        var offset = Math.floor((Math.random() * 100) + 1);
+        child.y = 300 + offset;
+        console.log(child);
+
     });
 
     bombs = this.physics.add.group();
 
     //  The score
     scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+
+    // On-screen debug text
+    debug = this.add.text(16, 50, 'Debug - ', { fontSize: '16px', fill: '#f00' });
 
     //  Collide the player and the fishs with the platforms
     this.physics.add.collider(player, platforms);
@@ -135,13 +145,24 @@ function create ()
 
 function update ()
 {   background.x -= 3;
- 
- 
+
+    debug.setText('Position: ' + background.x);
+
+    fishs.children.iterate(function (child) {
+
+        child.x -= 3;
+
+    });
+
  //if background reaches to a certain x position, then put x position back to 0
-    if (background.x == 2550)
+ // 1278 - 850 (start point, minus screen width)
+    if (background.x < 428)
         
         {
-            background.x = 1
+
+            this.add.text(16, 100, 'End of the background!', { fontSize: '16px', fill: '#f00' });
+
+            background.x = 1278;
         }
     //this.physics.world.wrap(backround, 0);
     
