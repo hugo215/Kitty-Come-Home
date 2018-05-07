@@ -41,6 +41,7 @@ var score = -10;
 var gameOver = false;
 var scoreText;
 var background;
+var counter = 0;
 
 var game = new Phaser.Game(config);
 
@@ -162,7 +163,22 @@ function update ()
 
             this.add.text(16, 100, 'End of the background!', { fontSize: '16px', fill: '#f00' });
 
+            // do this for N loops
             background.x = 1278;
+            counter++;
+            
+            // at N-1 loops, show house
+            if (counter > 4) {
+                // show house sprite
+            
+            }
+            
+            // after house, stop game
+            if (counter > 5) {
+                // end
+            
+            }
+
         }
     //this.physics.world.wrap(backround, 0);
     
