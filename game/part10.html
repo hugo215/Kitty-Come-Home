@@ -2,7 +2,7 @@
 <html lang="en"> 
 <head> 
     <meta charset="UTF-8" />
-    <title>Making your first Phaser 3 Game - Part 10</title>
+    <title>Kitty-Come-Home</title>
     <script src="//cdn.jsdelivr.net/npm/phaser@3.1.1/dist/phaser.js"></script>
     <style type="text/css">
         body {
@@ -42,6 +42,7 @@ var gameOver = false;
 var scoreText;
 var background;
 var counter = 0;
+var house;
 
 var game = new Phaser.Game(config);
 
@@ -53,6 +54,7 @@ function preload ()
     this.load.image('fish', 'assets/fish.png');
     this.load.image('bomb', 'assets/bomb.png');
     this.load.spritesheet('cat', 'assets/catsprite.png', { frameWidth: 80, frameHeight: 62 });
+    this.load.image ('house', 'assets/home1.JPG');
 }
 
 function create ()
@@ -108,7 +110,7 @@ function create ()
     //  Some fishs to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
     fishs = this.physics.add.group({
         key: 'fish',
-        repeat: 11,
+        repeat: 1000,
         setXY: { x: 12, y: 400, stepX: 480 }
     });
     
@@ -145,13 +147,13 @@ function create ()
 }
 
 function update ()
-{   background.x -= 3;
+{   background.x -= 5;
 
-    debug.setText('Position: ' + background.x);
+    debug.setText('');
 
     fishs.children.iterate(function (child) {
 
-        child.x -= 3;
+        child.x -= 5;
 
     });
 
@@ -161,16 +163,16 @@ function update ()
         
         {
 
-            this.add.text(16, 100, 'End of the background!', { fontSize: '16px', fill: '#f00' });
+            this.add.text(16, 100, '', { fontSize: '16px', fill: '#f00' });
 
             // do this for N loops
             background.x = 1278;
             counter++;
             
             // at N-1 loops, show house
-            if (counter > 4) {
+            if (counter > 8) { 
                 // show house sprite
-            
+            house = this.add.image(426, 240, 'house')
             }
             
             // after house, stop game
